@@ -6,7 +6,8 @@ from urllib.parse import unquote, urlparse
 from supervisely.io.fs import get_file_name, get_file_size
 import shutil
 
-from tqdm import tqdm
+import tqdm
+
 
 def download_dataset(teamfiles_dir: str) -> str:
     """Use it for large datasets to convert them on the instance"""
@@ -53,21 +54,70 @@ def download_dataset(teamfiles_dir: str) -> str:
     return dataset_path
 
 
+projects = [
+    "/mnt/c/users/german/documents/strawberries/training",
+    "/mnt/c/users/german/documents/strawberries/validation",
+]
+
+directory = os.path.dirname(projects[0])
+with open(directory + "/names.txt") as names_file:
+    names = names_file.read().split("\n")
+
+
+def yolobbox2bbox(x, y, w, h):
+    x1, y1 = x - w / 2, y - h / 2
+    x2, y2 = x + w / 2, y + h / 2
+    return x1, y1, x2, y2
+
 
 def convert_and_upload_supervisely_project(
     api: sly.Api, workspace_id: int, project_name: str
 ) -> sly.ProjectInfo:
-    ### Function should read local dataset and upload it to Supervisely project, then return project info.###
-    raise NotImplementedError("The converter should be implemented manually.")
+    project = api.project.create(workspace_id, project_name)
+    meta = sly.ProjectMeta()
 
-    # dataset_path = "/local/path/to/your/dataset" # general way
-    # dataset_path = download_dataset(teamfiles_dir) # for large datasets stored on instance
+    def load_image_labels(image_path, labels_path):
+        image_info = api.image.upload_path(dataset.id, os.path.basename(image_path), image_path)
+        output = []
+        with open(labels_path) as file:
+            file_split = file.read().rstrip().split("\n")
+        for row in file_split:
+            if row == "":
+                continue
+            output.append(row.split())
+        labels = []
+        height = image_info.height
+        width = image_info.width
+        for bbox in output:
+            c, x, y, w, h = bbox
+            obj_class_name = names[int(c)]
 
-    # ... some code here ...
+            x1, y1, x2, y2 = yolobbox2bbox(float(x), float(y), float(w), float(h))
+            bbox_annotation = sly.Rectangle(y1 * height, x1 * width, y2 * height, x2 * width)
+            obj_class = meta.get_obj_class(obj_class_name)
+            label = sly.Label(bbox_annotation, obj_class)
+            labels.append(label)
 
-    # sly.logger.info('Deleting temporary app storage files...')
-    # shutil.rmtree(storage_dir)
+        ann = sly.Annotation(img_size=[height, width], labels=labels)
+        api.annotation.upload_ann(image_info.id, ann)
 
-    # return project
+    for name in names:
+        if name == "":
+            break
+        obj_class = sly.ObjClass(name, sly.Rectangle)
+        meta = meta.add_obj_class(obj_class)
+        api.project.update_meta(project.id, meta)
 
+    for project_directory in projects:
+        image_path = sly.fs.list_files(project_directory, valid_extensions=[".jpg"])
+        dataset = api.dataset.create(project.id, os.path.basename(project_directory))
+        # upload bboxes to images
+        pbar = tqdm.tqdm(desc="image", total=len(image_path))
+        for path in image_path:
+            l_path = os.path.join(project_directory, (os.path.basename(path)[:-4] + ".txt"))
+            load_image_labels(path, l_path)
+            pbar.update(1)
+        pbar.close()
+        print(f"Dataset {dataset.id} has been successfully created.")
 
+    return project
