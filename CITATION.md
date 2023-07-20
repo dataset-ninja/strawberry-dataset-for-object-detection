@@ -1,3 +1,18 @@
-```Josep Ramon Morros, Tomas Pariente Lobo, Sergio Salmeron-Majadas, Javier Villazan, Diego Merino, Ana Antunes, Mihai Datcu, Chandrabali Karmakar, Edmundo Guerra, Despina-Athanasia Pantazi, & George Stamoulis. (2021). AI4Agriculture Grape Dataset (1.0.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.5660081```
+If you make use of the Strawberry dataset for object detection data, please cite the following reference:
 
-[🔗 Source](https://zenodo.org/record/6126677#.ZGUS8nbMIuW)
+```bibtex
+@dataset{pastell_matti_2022_6126677,
+  author       = {Pastell, Matti and
+                  Lemsalu. Madis and
+                  Bloch, Victor},
+  title        = {Strawberry dataset for object detection},
+  month        = feb,
+  year         = 2022,
+  publisher    = {Zenodo},
+  version      = {v1},
+  doi          = {10.5281/zenodo.6126677},
+  url          = {https://doi.org/10.5281/zenodo.6126677}
+}
+```
+
+[🔗 Source](https://zenodo.org/record/6126677/export/hx)
