@@ -15,6 +15,7 @@ from dataset_tools.templates import (
 ##################################
 PROJECT_NAME: str = "Strawberry dataset for object detection"
 PROJECT_NAME_FULL: str = "Strawberry dataset for object detection"
+HIDE_DATASET = True  # set False when 100% sure about repo quality
 
 ##################################
 # * After uploading to instance ##
@@ -50,18 +51,26 @@ DOWNLOAD_ORIGINAL_URL: Optional[
 CLASS2COLOR: Optional[Dict[str, List[str]]] = None
 # If specific colors for classes are needed, fill this dict (e.g. {"class1": [255, 0, 0], "class2": [0, 255, 0]})
 
+# If you have more than the one paper, put the most relatable link as the first element of the list
+# Use dict key to specify name for a button
 PAPER: Optional[
-    str
+    Union[str, List[str], Dict[str, str]]
 ] = "https://www.sciencedirect.com/science/article/pii/S2405896322027422?via%3Dihub"
+BLOGPOST: Optional[Union[str, List[str], Dict[str, str]]] = None
+REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = None
+
 CITATION_URL: Optional[str] = "https://zenodo.org/record/6126677/export/hx"
 AUTHORS: Optional[List[str]] = ["Pastell, Matti", "Lemsalu. Madis", "Bloch, Victor"]
-
 
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = "Natural Resources Institute Finland (Luke)"
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://www.luke.fi/en"
 
-SLYTAGSPLIT: Optional[Dict[str, List[str]]] = None
-TAGS: List[str] = None
+# Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
+SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = None
+TAGS: Optional[List[str]] = None
+
+
+SECTION_EXPLORE_CUSTOM_DATASETS: Optional[List[str]] = None
 
 ##################################
 ###### ? Checks. Do not edit #####
@@ -81,6 +90,8 @@ def get_settings():
 
     settings = {
         "project_name": PROJECT_NAME,
+        "project_name_full": PROJECT_NAME_FULL or PROJECT_NAME,
+        "hide_dataset": HIDE_DATASET,
         "license": LICENSE,
         "applications": APPLICATIONS,
         "category": CATEGORY,
@@ -96,15 +107,18 @@ def get_settings():
         raise ValueError("Please fill all fields in settings.py after uploading to instance.")
 
     settings["release_date"] = RELEASE_DATE
-    settings["project_name_full"] = PROJECT_NAME_FULL or PROJECT_NAME
     settings["download_original_url"] = DOWNLOAD_ORIGINAL_URL
     settings["class2color"] = CLASS2COLOR
     settings["paper"] = PAPER
+    settings["blog"] = BLOGPOST
+    settings["repository"] = REPOSITORY
     settings["citation_url"] = CITATION_URL
     settings["authors"] = AUTHORS
     settings["organization_name"] = ORGANIZATION_NAME
     settings["organization_url"] = ORGANIZATION_URL
     settings["slytagsplit"] = SLYTAGSPLIT
     settings["tags"] = TAGS
+
+    settings["explore_datasets"] = SECTION_EXPLORE_CUSTOM_DATASETS
 
     return settings

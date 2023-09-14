@@ -1,17 +1,18 @@
 from dataset_tools.templates import AnnotationType
-
-from src.settings import ANNOTATION_TYPES
+from settings import ANNOTATION_TYPES
 
 ###############################################################################
 # ! Set up values if you want to change default values of visualizations
 ###############################################################################
 
+SAMPLE_RATE = 1  # make less if dataset is too big
+
 # * Preview class to visualize in SUMMARY.md overview section
-# * Literal["ClassesPreview", "HorizontalGrid", "SideAnnotationsGrid", "Poster"]
+# * Literal["ClassesPreview", "HorizontalGrid", "SideAnnotationsGrid", "Poster", "HorizontalGridAnimated", "VerticalGridAnimated"]
 # * If None, then preview_class will be set automatically to "ClassesPreview"
 PREVIEW_CLASS = "Poster"
 
-IS_DETECTION_TASK: bool = True  # ? Set True if you want to visualize only bbox annotations
+IS_DETECTION_TASK: bool = None  # ? Set True if you want to visualize only bbox annotations
 if IS_DETECTION_TASK is None:
     IS_DETECTION_TASK = ANNOTATION_TYPES == [AnnotationType.ObjectDetection()]
 
@@ -136,6 +137,7 @@ def get_stats_options():
         "Previews": {
             "is_detection_task": PREVIEWS_IS_DETECTION_TASK,
         },
+        "Other": {"sample_rate": SAMPLE_RATE},
     }
 
     checked_stats_settings = {}

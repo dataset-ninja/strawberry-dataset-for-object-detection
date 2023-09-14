@@ -7,7 +7,7 @@ import tqdm
 from dataset_tools.convert import unpack_if_archive
 from supervisely.io.fs import get_file_name, get_file_size
 
-import src.settings as s
+import settings as s
 
 # def download_dataset(teamfiles_dir: str) -> str:
 #     """Use it for large datasets to convert them on the instance"""
