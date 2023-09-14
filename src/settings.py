@@ -13,8 +13,8 @@ from dataset_tools.templates import (
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = "Strawberry dataset for object detection"
-PROJECT_NAME_FULL: str = "Strawberry dataset for object detection"
+PROJECT_NAME: str = "Strawberry Dataset for Object Detection"
+PROJECT_NAME_FULL: str = "Strawberry Dataset for Object Detection"
 HIDE_DATASET = False  # set False when 100% sure about repo quality
 
 ##################################
