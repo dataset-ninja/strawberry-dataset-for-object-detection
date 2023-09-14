@@ -15,14 +15,14 @@ from dataset_tools.templates import (
 ##################################
 PROJECT_NAME: str = "Strawberry dataset for object detection"
 PROJECT_NAME_FULL: str = "Strawberry dataset for object detection"
-HIDE_DATASET = True  # set False when 100% sure about repo quality
+HIDE_DATASET = False  # set False when 100% sure about repo quality
 
 ##################################
 # * After uploading to instance ##
 ##################################
 LICENSE: License = License.CC_BY_4_0()
 APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.Agricultural()]
-CATEGORY: Category = Category.Agriculture()
+CATEGORY: Category = Category.Agriculture(extra=[Category.Robotics()])
 
 CV_TASKS: List[CVTask] = [CVTask.ObjectDetection()]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.ObjectDetection()]

@@ -1,3 +1,3 @@
-# Strawberry dataset for object detection
+# Strawberry Dataset for Object Detection
 
-Object detection dataset with annotated ripe and unripe strawberries and their peduncles.
+Strawberry dataset for object detection is a dataset for object detection task tasks.
