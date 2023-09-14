@@ -2,8 +2,7 @@ If you make use of the Strawberry dataset for object detection data, please cite
 
 ```bibtex
 @dataset{pastell_matti_2022_6126677,
-  author       = {Matti and Lemsalu, Pastell. 
-                  Madis and Bloch, Victor},
+  author       = {Pastell Matti, Lemsalu. Madis and Bloch Victor},
   title        = {Strawberry dataset for object detection},
   month        = feb,
   year         = 2022,

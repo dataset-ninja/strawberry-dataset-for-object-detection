@@ -60,7 +60,7 @@ BLOGPOST: Optional[Union[str, List[str], Dict[str, str]]] = None
 REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = None
 
 CITATION_URL: Optional[str] = "https://zenodo.org/record/6126677/export/hx"
-AUTHORS: Optional[List[str]] = ["Pastell, Matti", "Lemsalu. Madis", "Bloch, Victor"]
+AUTHORS: Optional[List[str]] = ["Pastell, Matti", ". Madis", "Bloch, Victor"]
 
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = "Natural Resources Institute Finland (Luke)"
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://www.luke.fi/en"
