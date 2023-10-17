@@ -1,6 +1,6 @@
-Dataset **Strawberry dataset for object detection** can be downloaded in Supervisely format:
+Dataset **Strawberry Dataset for Object Detection** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/S/b/Ab/31jjnWPVuosgD88vPN6p6jBtWtBVFGebhzIxJAydWKo2nHKQhMGhbMf1hGbTcIJlUub8tR7O61yUCwArrMs9JnJtEFK7o8AwlNqn420WaHN32piKxWsHXCoSRP4y.tar)
+ [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/L/O/Jq/nBHOKwmmAF2sUr75OBA1ro5h5DZw5myYqIDJKYKDTxPxB82Halcity4KYoywIIwuvZr3ZjmWOrrlNbOwmLHujWRW7AQoyblsAmoEniV4BAWBTaAE1bg38mEKfD4u.tar)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
@@ -11,6 +11,8 @@ pip install --upgrade dataset-tools
 ``` python
 import dataset_tools as dtools
 
-dtools.download(dataset='Strawberry dataset for object detection', dst_path='~/dtools/datasets/Strawberry dataset for object detection.tar')
+dtools.download(dataset='Strawberry Dataset for Object Detection', dst_dir='~/dataset-ninja/')
 ```
-The data in original format can be 🔗[downloaded here](https://zenodo.org/record/6126677/files/strawberries.zip?download=1)
+Make sure not to overlook the [python code example](https://developer.supervisely.com/getting-started/python-sdk-tutorials/iterate-over-a-local-project) available on the Supervisely Developer Portal. It will give you a clear idea of how to effortlessly work with the downloaded dataset.
+
+The data in original format can be [downloaded here](https://zenodo.org/record/6126677/files/strawberries.zip?download=1).
