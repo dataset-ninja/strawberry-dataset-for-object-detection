@@ -8,14 +8,14 @@ Developing a robotic solution capable of replacing human labor in horticultural 
 
 The decision to grasp the strawberry's peduncle imposed specific requirements on the vision system:
 
-1. Continuous Tracking: The method must continuously select, locate, and track a single strawberry as the camera approaches it.
+1. **Continuous Tracking**: The method must continuously select, locate, and track a single strawberry as the camera approaches it.
 
-2. Peduncle Identification: Once the camera is within 10-50 centimeters of the strawberry, the vision system must consistently identify the peduncle connected to the strawberry in every frame, even when the camera is in motion.
+2. **Peduncle Identification**: Once the camera is within 10-50 centimeters of the strawberry, the vision system must consistently identify the peduncle connected to the strawberry in every frame, even when the camera is in motion.
 
-3. Distance Estimation: The system should calculate the estimated distance from the camera to the peduncle once it is detected.
+3. **Distance Estimation**: The system should calculate the estimated distance from the camera to the peduncle once it is detected.
 
-4. Continuous Detection: While the cutter approaches to grasp the peduncle, the vision system must maintain detection of the peduncle in each frame.
+4. **Continuous Detection**: While the cutter approaches to grasp the peduncle, the vision system must maintain detection of the peduncle in each frame.
 
-5. Optimal Approach Angle: The system should determine a suitable approach angle to the berry. The camera, attached to the cutter, can be rotated around the strawberry to find this ideal angle.
+5. **Optimal Approach Angle**: The system should determine a suitable approach angle to the berry. The camera, attached to the cutter, can be rotated around the strawberry to find this ideal angle.
 
 The authors selected the YOLOv5 object detection model, considering its real-time performance, low memory footprint, quick training, and compatibility with NVIDIA TensorRT for real-time inference. This choice was driven by both computational constraints and project time limitations, enabling efficient development and deployment on the target device.
