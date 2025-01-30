@@ -1,6 +1,6 @@
 Dataset **Strawberry Dataset for Object Detection** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://www.dropbox.com/scl/fi/1m7tibsug23qwhztr9rqz/strawberry-dataset-for-object-detection-DatasetNinja.tar?rlkey=p10v5c5qj0k9ywfu3khlh9zv0&dl=1)
+ [Download](https://assets.supervisely.com/remote/eyJsaW5rIjogImZzOi8vYXNzZXRzLzEzNjBfU3RyYXdiZXJyeSBEYXRhc2V0IGZvciBPYmplY3QgRGV0ZWN0aW9uL3N0cmF3YmVycnktZGF0YXNldC1mb3Itb2JqZWN0LWRldGVjdGlvbi1EYXRhc2V0TmluamEudGFyIiwgInNpZyI6ICJ1em5HbTQwNkljazNTSW9Nd3NUSi9oR3dUOVNiZGIxVDF0bjZOcGhIUVFjPSJ9)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
